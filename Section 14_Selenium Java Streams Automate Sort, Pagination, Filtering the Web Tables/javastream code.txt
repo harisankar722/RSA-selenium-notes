@@ -1,0 +1,92 @@
+// count the number of names starting with alphabet "A" in list 
+ArrayList<String> names = new ArrayList<String>();
+		names.add("Abhijeet");
+		names.add("don");
+		names.add("Alekhya");
+		names.add("Adam");
+		names.add("Ram");
+		int count =0;
+for (int i=0;i<names.size();i++)
+{
+	String actual=names.get(i);
+	if(actual.startsWith("A"))
+	{
+		count++;
+
+}
+
+	}
+System.out.println(count);
+}
+	}
+
+// So same above program, let's say.How can we optimize it?
+ //Very minimal and do it in one or two lines with the help of streams.
+
+   //@Test
+   public void Streamfilter()
+   {
+	   ArrayList<String> names = new ArrayList<String>();
+		names.add("Abhijeet");
+		names.add("don");
+		names.add("Alekhya");
+		names.add("Adam");
+		names.add("Ram");
+       
+		long c = names.stream().filter(s->s.startsWith("A")).count();
+        System.out.println(c);
+   }
+}
+
+// 2nd method ---- previous program you created one arraylist and then you converted in to stream but in the below line i directly create a stream with the stream API 
+//    System.out.println((Stream.of("Abhijeet","Don","Alekhya","Adham","Ram").filter(s->s.startsWith("A")).count()));
+
+//what this lambda expression tells the right side, specify the action.
+//If that action is more than one line, then you can actually open the braces and write a whole code inside it.
+
+Long d = Stream.of(“Abhijeet”,”Don”,”Alekhya”,”Adham”,”Ram”).filter(s->
+{
+s.startsWith(“A”);
+return true;
+}).count();
+System.out.println(d);
+}
+
+//Print all the names present in the list with the name length is greater than 4
+1.	 first convert names into stream.
+names.stream().filter(s->s.length()>4).forEach(s->system.out.println(s));
+2 results will get abijeet and alekya but i want only one result to print.
+names.stream().filter(s->s.length()>4).limit(1).forEach(s->System.out.println(s));
+
+// Print names which have last letter as "a" with uppercase
+Stream.of("Abhijeet","Don","Alekhya","Adham","Rama").filter(s->s.endsWith("a")).map(s->s.toUpperCase()).forEach(s->System.out.println(s));
+//result is ALEKHYA, RAMA
+
+
+//print names which have first letter as “a” and upper case has sorted
+List<String> names = Arrays.asList("Azbhijeet","Don","Alekhya","Adam","Rama");
+names.stream().filter(s->s.startsWith("A")).sorted().map(s->s.toUpperCase()).forEach(s->System.out.println(s));
+
+//merge to array lists
+Stream<String> newStream =Stream.concat(names.stream(),names1.stream());
+newStream.sorted().forEach(s->System.out.println(s));
+
+// now we want to check whether Adam is present in that big merge list or not
+Stream<String> newStream =Stream.concat(names.stream(),names1.stream());
+Boolean flag=newStream.anyMatch(s->s.equalsIgnoreCase("Adam"));
+		System.out.println(flag);
+		Assert.assertTrue(flag);
+
+// let's convert back that into new list using collect method
+List<String> ls=Stream.of("Abhijeet","Don","Alekya","Adam","Rama").filter(s->s.endsWith("a")).map(s->s.toUpperCase()).collect(Collectors.toList());
+System.out.println(ls.get(0));
+
+// Distinct method simply will get the result of only distinct elements in this list, 
+// and it will avoid all the duplicates. It will only print the unique, distinct numbers.
+List<Integer>Values=Arrays.asList(3,2,2,7,5,1,9,7);
+		//print unique number from this array
+		//sort the array – 3rd index – 1,2,3,5,7,9
+		Values.stream().distinct().forEach(s->System.out.println(s));
+		List<Integer> li=Values.stream().distinct().sorted().collect(Collectors.toList());
+		System.out.println(li.get(2));
+
