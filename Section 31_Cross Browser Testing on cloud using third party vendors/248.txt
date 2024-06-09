@@ -1,0 +1,7 @@
+You can learn more about Sauce labs Selenium from below link
+https://saucelabs.com/products/open-source-frameworks
+
+Please download the code from this lecture.
+
+Before running this code repo in your local, Please  update username and accesskey 
+in the code repo with  your Browserstack account details

@@ -1,0 +1,3 @@
+soft asset this is a predefined class of TestNg
+create the object of sfotAssrt
+at the end - soft.assertAll(); - 
